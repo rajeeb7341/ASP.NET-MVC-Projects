@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WeatherTodayApp.Models.WeatherDetail>
+
+@{
+    ViewBag.Title = "GetWeatherByCityPost";
+}
+
+<h2>Weather By City Result</h2>
+<b style="color:red">@ViewBag.Msg</b>
+
+<p>
+    @Html.ActionLink("Create New", "CreateWeather","Weather")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CityID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Temperature)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Humidity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Visibility)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CityID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CityName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CountryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Temperature)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Humidity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Visibility)
+        </td>
+        <td>
+            @Html.ActionLink("Update Weather", "UpdateWeather", new { CityId=item.CityID }) |
+            
+            @Html.ActionLink("Delete Weather Details", "DeleteWeather", new { CityId = item.CityID })
+        </td>
+    </tr>
+}
+
+</table>
